@@ -3,7 +3,7 @@
 #include "type.hpp"
 #include <array>
 #include <queue>
-
+#include <cassert>
 
 class EntityManager
 {
@@ -25,6 +25,7 @@ public:
 
 	Entity CreateEntity()
 	{
+		assert(mLivingEntityCount < MAX_ENTITIES && "Too many entities in existence.");
         // Take an ID from the front of the queue
 		Entity id = mAvailableEntities.front();
 		mAvailableEntities.pop();
@@ -35,6 +36,7 @@ public:
 
 	void DestroyEntity(Entity entity)
 	{
+		assert(entity < MAX_ENTITIES && "Entity out of range.");
         // Delete the entity's signature
 		mSignatures[entity].reset();
 
@@ -45,11 +47,13 @@ public:
 
 	void SetSignature(Entity entity, Signature signature)
 	{
+		assert(entity < MAX_ENTITIES && "Entity out of range.");
 		mSignatures[entity] = signature;
 	}
 
 	Signature GetSignature(Entity entity)
 	{
+		assert(entity < MAX_ENTITIES && "Entity out of range.");
 		return mSignatures[entity];
 	}
 };

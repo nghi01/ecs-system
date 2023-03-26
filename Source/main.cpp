@@ -6,6 +6,7 @@
 #include <vector>
 #include <chrono>
 #include <random>
+#include <iostream>
 
 Coordinator gCoordinator;
 
@@ -72,5 +73,6 @@ int main()
 		auto stopTime = std::chrono::high_resolution_clock::now();
 
 		dt = std::chrono::duration<float, std::chrono::seconds::period>(stopTime - startTime).count();
+		std::cout << "I'm running.";
 	}
 }
