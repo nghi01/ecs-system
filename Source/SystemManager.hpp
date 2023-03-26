@@ -8,6 +8,10 @@
 
 class SystemManager
 {
+private:
+	std::unordered_map<const char*, Signature> mSignatures{};
+	std::unordered_map<const char*, std::shared_ptr<System>> mSystems{};
+
 public:
 	template<typename T>
 	std::shared_ptr<T> RegisterSystem()
@@ -55,7 +59,15 @@ public:
 		}
 	}
 
-private:
-	std::unordered_map<const char*, Signature> mSignatures{};
-	std::unordered_map<const char*, std::shared_ptr<System>> mSystems{};
+	void ListSystemEntities()
+	{
+		for (auto const& pair : mSystems)
+		{
+			auto const& type = pair.first;
+			auto const& system = pair.second;
+			auto const& systemSignature = mSignatures[type];
+
+			system->ListEntities();
+		}
+	}
 };

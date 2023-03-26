@@ -63,7 +63,7 @@ int main()
 	}
 
 	float dt = 0.0f;
-
+	//physicsSystem->ListEntities();
 	while (!quit)
 	{
 		auto startTime = std::chrono::high_resolution_clock::now();
@@ -73,6 +73,5 @@ int main()
 		auto stopTime = std::chrono::high_resolution_clock::now();
 
 		dt = std::chrono::duration<float, std::chrono::seconds::period>(stopTime - startTime).count();
-		std::cout << "I'm running.";
 	}
 }
