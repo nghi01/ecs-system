@@ -5,6 +5,7 @@ Huge thanks and appreciation to [Austin Morlan's post on ECS](https://austinmorl
 
 ## Prerequisites
 * Cmake
+* A C++ Compiler
 
 ## How to run
 Run these if you haven't created a build folder yet.
